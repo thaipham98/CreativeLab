@@ -2,8 +2,8 @@ public class MagicWeapon extends Weapon {
 
     private final int manaCost;
 
-    public MagicWeapon(String name, int strength, int durability, int manaCost, Hero hero) {
-        super(name, strength, durability, WeaponType.MAGIC, hero);
+    public MagicWeapon(String name, int strength, int durability, int manaCost) {
+        super(name, strength, durability, WeaponType.MAGIC);
         this.manaCost = manaCost;
     }
 

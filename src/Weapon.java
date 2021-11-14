@@ -11,14 +11,6 @@ public abstract class Weapon implements WeaponInterface {
     protected WeaponType type;
     protected Hero hero;
 
-    public Weapon(String name, int strength, int durability, WeaponType type, Hero hero) {
-        this.name = name;
-        this.strength = strength;
-        this.durability = durability;
-        this.type = type;
-        this.hero = hero;
-    }
-
     public Weapon(String name, int strength, int durability, WeaponType type) {
         this.name = name;
         this.strength = strength;
@@ -30,6 +22,7 @@ public abstract class Weapon implements WeaponInterface {
         return durability <= 0;
     }
 
-
-
+    public void givenTo(Hero hero) {
+        this.hero = hero;
+    }
 }

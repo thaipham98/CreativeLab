@@ -17,6 +17,7 @@ public class Hero extends CharacterAbstract{
 
     public void setWeapon(Weapon w1) {
         this.w1 = w1;
+        w1.givenTo(this);
     }
 
     public Weapon getWeapon() {

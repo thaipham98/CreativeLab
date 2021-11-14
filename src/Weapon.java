@@ -18,6 +18,17 @@ public abstract class Weapon implements WeaponInterface {
         this.type = type;
     }
 
+    @Override
+    public String toString() {
+        return "Weapon{" +
+                ", type=" + type +
+                "name='" + name + '\'' +
+                ", strength=" + strength +
+                ", durability=" + durability +
+                ", hero=" + hero +
+                '}';
+    }
+
     protected boolean notDurable() {
         return durability <= 0;
     }
@@ -25,4 +36,6 @@ public abstract class Weapon implements WeaponInterface {
     public void givenTo(Hero hero) {
         this.hero = hero;
     }
+
+
 }

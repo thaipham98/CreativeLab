@@ -14,8 +14,13 @@ public class BattleArena {
     }
 
     public void printOutListWeapon() {
-        weaponList.stream().map(w -> w.toString());
+//        weaponList.stream().map(w -> w.toString());
+        for (int i = 0; i < weaponList.size(); i++) {
+            System.out.println(i + ": " + weaponList.get(i).toString());
+        }
     }
+
+
 
     public Enemy chooseEnemy(){
         int randomIdx = rand.nextInt(enemyList.size());
@@ -71,11 +76,10 @@ public class BattleArena {
 
     public Weapon chooseWeapon(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Choose weapon from these: ");
+        System.out.println("Input an integer to choose weapon from these: ");
         printOutListWeapon();
-
-
-
+        int weaponChoice = sc.nextInt();
+        return weaponList.get(weaponChoice);
     }
 
     public void isWinner() {

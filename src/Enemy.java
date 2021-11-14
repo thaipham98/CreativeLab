@@ -4,8 +4,6 @@ public class Enemy extends CharacterAbstract{
     // TODO: change into phrases to badguy to speak
     String[] phrases = {"phrase1", "phrase2", "phrase3", "phrase4", "phrase5"};
 
-
-
     /**
      * Construct a character object initializing all variables other than alive and
      * set alive to be true
@@ -30,6 +28,6 @@ public class Enemy extends CharacterAbstract{
 
     @Override
     public String toString() {
-        return "HERO " + super.toString();
+        return "ENEMY " + super.toString();
     }
 }

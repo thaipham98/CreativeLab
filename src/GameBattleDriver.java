@@ -18,13 +18,13 @@
 public class GameBattleDriver {
 	public static void main(String[] args) {
 
-		Character hero = new Character("Sparhawk", 40, 10);
-		// System.out.println(Character.numChars);
-
-		Character badguy = new Character("Gwerg", 100, 3);
-		// System.out.println(Character.numChars);
-
-		Character hero2 = new Character("Sparhawk", 40, 10);
+//		Character hero = new Character("Sparhawk", 40, 10);
+//		// System.out.println(Character.numChars);
+//
+//		Character badguy = new Character("Gwerg", 100, 3);
+//		// System.out.println(Character.numChars);
+//
+//		Character hero2 = new Character("Sparhawk", 40, 10);
 		// System.out.println(Character.numChars);
 
 		// BattleArena b1 = new BattleArena(hero, badguy);

@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Badguy extends CharacterAbstract{
+public class Enemy extends CharacterAbstract{
     // TODO: change into phrases to badguy to speak
     String[] phrases = {"phrase1", "phrase2", "phrase3", "phrase4", "phrase5"};
 
@@ -14,7 +14,7 @@ public class Badguy extends CharacterAbstract{
      * @param hitPoints - initial set of hitPoints for our character
      * @param strength  - initial strength of our character.
      */
-    public Badguy(String name, int hitPoints, int strength) {
+    public Enemy(String name, int hitPoints, int strength) {
         super(name, hitPoints, strength);
     }
 

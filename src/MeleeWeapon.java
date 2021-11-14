@@ -8,7 +8,7 @@ public class MeleeWeapon extends Weapon {
 
     @Override
     public int damage() {
-        if (notDurable()) return 0;
+        if (notDurable()) return hero.attack();
         int minDamage = strength - 10;
         durability -= DURABILITY_COST;
         return rand.nextInt(strength - minDamage) + minDamage;

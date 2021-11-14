@@ -7,7 +7,7 @@ public class RangedWeapon extends Weapon {
     @Override
     public int damage() {
         if (notDurable())
-            return 0;
+            hero.attack();
 
         if (miss())
             return 0;

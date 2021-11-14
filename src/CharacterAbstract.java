@@ -1,6 +1,8 @@
 import java.util.Random;
 
 public abstract class CharacterAbstract implements ICharacter{
+
+    private static final Random rand = new Random();
     protected String name;
     protected int hitPoints;
     protected int strength;
@@ -26,8 +28,7 @@ public abstract class CharacterAbstract implements ICharacter{
 
     @Override
     public int attack() {
-        Random r1 = new Random();
-        return r1.nextInt(this.strength);
+        return rand.nextInt(this.strength) + 1;
     }
 
     @Override

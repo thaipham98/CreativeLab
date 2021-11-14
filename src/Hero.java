@@ -24,6 +24,10 @@ public class Hero extends CharacterAbstract{
         return this.w1;
     }
 
+    public int getMana() {
+        return this.mana;
+    }
+
     // TODO: check on this, depends on weapon class
     public int attackWithWeapon(){
         /* update this function to add the weapon attack */

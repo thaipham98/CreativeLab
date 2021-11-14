@@ -23,6 +23,8 @@ public class Hero extends CharacterAbstract{
         return this.w1;
     }
 
+
+
     // TODO: check on this, depends on weapon class
     public int attackWithWeapon(){
         /* update this function to add the weapon attack */
@@ -44,5 +46,9 @@ public class Hero extends CharacterAbstract{
     @Override
     public String toString() {
         return "HERO " + super.toString();
+    }
+
+    public void useMagic(int manaCost) {
+         this.mana -= manaCost;
     }
 }

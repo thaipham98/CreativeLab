@@ -2,8 +2,8 @@ public class MagicWeapon extends WeaponAbstract {
 
     private final int manaCost;
 
-    public MagicWeapon(String name, int strength, int durability, int manaCost) {
-        super(name, strength, durability, WeaponType.MAGIC);
+    public MagicWeapon(String name, int strength, int durability, int manaCost, Hero hero) {
+        super(name, strength, durability, WeaponType.MAGIC, hero);
         this.manaCost = manaCost;
     }
 
@@ -14,21 +14,14 @@ public class MagicWeapon extends WeaponAbstract {
 
        int minDamage = strength - 10;
        durability -= DURABILITY_COST;
+       hero.useMagic(manaCost);
        return rand.nextInt(strength - minDamage) + minDamage;
-    }
-
-    public int getManaCost() {
-        return manaCost;
-    }
-
-    public int specialSkillManaCost() {
-        return manaCost * 2;
     }
 
     public int specialAttack() {
         if (notDurable())
             return 0;
-
+        hero.useMagic(2 * manaCost);
         durability -= DURABILITY_COST;
         return damage() * 2;
     }

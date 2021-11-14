@@ -23,8 +23,6 @@ public class Hero extends CharacterAbstract{
         return this.w1;
     }
 
-
-
     // TODO: check on this, depends on weapon class
     public int attackWithWeapon(){
         /* update this function to add the weapon attack */
@@ -32,7 +30,7 @@ public class Hero extends CharacterAbstract{
         if (this.w1 == null) {
             return this.attack();
         }
-        return this.w1.attack();
+        return this.w1.damage();
     }
 
     // TODO: check on this, depends on weapon class
@@ -40,7 +38,7 @@ public class Hero extends CharacterAbstract{
         if (this.w1 == null) {
             return this.attack();
         }
-        return this.w1.attack();
+        return this.w1.damage();
     }
 
     @Override

@@ -54,7 +54,7 @@ public class Character {
         if (this.w1 == null) {
             return this.attack(this.strength);
         }
-        return this.w1.attack();
+        return this.w1.damage();
 
     }
 

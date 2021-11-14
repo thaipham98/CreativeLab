@@ -41,16 +41,16 @@ public class GameBattleDriver {
 		/* Create a weapon and "give it" to the hero to use */
 		/* Add some print statements to print the weapon that was given to the hero */
 
-		Weapon w1 = new Weapon("gun", 100, 12);
-		hero.setWeapon(w1);
-		System.out.println("Hero Weapon: ");
-		System.out.println(hero.getWeapon().toString());
-		
-		// creative element Amour
-		Armour a1 = new Armour("color amour", 20, 5);
-		badguy.setAmour(a1);
-		
-		BattleArena.fight(hero, badguy);
+//		Weapon w1 = new Weapon("gun", 100, 12);
+//		hero.setWeapon(w1);
+//		System.out.println("Hero Weapon: ");
+//		System.out.println(hero.getWeapon().toString());
+//
+//		// creative element Amour
+//		Armour a1 = new Armour("color amour", 20, 5);
+//		badguy.setAmour(a1);
+//
+//		BattleArena.fight(hero, badguy);
 
 	}
 }

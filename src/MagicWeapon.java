@@ -1,4 +1,4 @@
-public class MagicWeapon extends WeaponAbstract {
+public class MagicWeapon extends Weapon {
 
     private final int manaCost;
 

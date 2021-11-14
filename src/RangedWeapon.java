@@ -1,4 +1,4 @@
-public class RangedWeapon extends WeaponAbstract {
+public class RangedWeapon extends Weapon {
 
     public RangedWeapon(String name, int strength, int durability, WeaponType type) {
         super(name, strength, durability, WeaponType.RANGED);

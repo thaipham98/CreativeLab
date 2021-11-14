@@ -1,4 +1,4 @@
-public class MeleeWeapon extends WeaponAbstract {
+public class MeleeWeapon extends Weapon {
 
     private static final int DURABILITY_COST = 3;
 

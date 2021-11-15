@@ -68,17 +68,17 @@ public class Hero extends CharacterAbstract{
 
     /**
      * Special attack with magic weapon that cost more mana but cost higher damage.
-     * If the weapon is no longer durable or if the hero doesnt have magic weapon,
+     * If the weapon is no longer durable or if the hero doesnt have weapon,
      * use regular attack instead
      * @return damage by special attack with magic weapon.
      */
     public int specAttackWithWeapon(){
-        if (this.w1 == null || !(w1 instanceof MagicWeapon)) {
-            System.out.println("Hero is not holding magic weapon. Deal regular damage");
+        if (this.w1 == null ) { //|| !(w1 instanceof MagicWeapon)
+            System.out.println("Hero is not holding weapon. Deal regular damage");
             return this.attack();
         }
         
-        return ((MagicWeapon) this.w1).specialAttack();
+        return this.w1.specialAttack();
     }
 
     @Override

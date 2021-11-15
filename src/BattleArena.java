@@ -116,7 +116,7 @@ public class BattleArena {
     }
 
 
-    private int getUserIntegerInput(int min, int max) throws IllegalArgumentException {
+    private int getUserIntegerInput(int min, int max) {
         int userInput = 0;
 
         try{
@@ -142,7 +142,7 @@ public class BattleArena {
     }
 
 
-    public boolean isWinner() {
+    private boolean isWinner() {
         if (heroList.size() == 0) {
             System.out.println("Team hero won");
             return true;
@@ -154,20 +154,4 @@ public class BattleArena {
         System.out.println("Go to next round: ");
         return false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

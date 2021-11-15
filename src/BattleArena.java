@@ -16,33 +16,32 @@ public class BattleArena {
     }
 
     private Enemy chooseEnemy(){
+        if (enemyList.isEmpty()) {
+            return null;
+        }
         int randomIdx = rand.nextInt(enemyList.size());
         return enemyList.get(randomIdx);
     }
 
     private Hero chooseHero(){
+        if (heroList.isEmpty()) {
+            return null;
+        }
         int randomIdx = rand.nextInt(heroList.size());
         return heroList.get(randomIdx);
     }
 
     private boolean wantWeapon() {
-        //yes
-        //ask
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Do you want to use weapon? (y/n): ");
-        String answer = myObj.nextLine();
-
+        String answer = sc.nextLine();
         return answer.equals("y");
     }
 
-    public void printOutListWeapon() {
-//        weaponList.stream().map(w -> w.toString());
+    private void printOutListWeapon() {
         for (int i = 0; i < weaponList.size(); i++) {
             System.out.println((i + 1) + ": " + weaponList.get(i).toString());
         }
-        // 1: , 2:, 3: ...
     }
-
 
     private Weapon chooseWeapon(){
         System.out.println("Input an integer to choose weapon from these: ");
@@ -53,6 +52,11 @@ public class BattleArena {
 
 
     public void fight(Hero hero, Enemy enemy){
+
+        if (hero == null || enemy == null) {
+            System.out.println("Game is ended!");
+            return;
+        }
         // give weapon to hero
         // for each fight of hero:
         // which attack to choose.
@@ -98,7 +102,7 @@ public class BattleArena {
         }
 
         // check is there is any winner yet.
-        if (!this.isWinner()) {
+        if (!this.isThereWinner()) {
             this.fight(chooseHero(), chooseEnemy());
         }
     }
@@ -117,23 +121,22 @@ public class BattleArena {
 
 
     private int getUserIntegerInput(int min, int max) {
-        int userInput = 0;
-
-        try{
-            userInput = sc.nextInt(); //aegeg
-        } catch (Exception e) {
-            // print(userInput) = 0
-            System.out.println("Please choose a valid number from " + min + " to " + max);
-        }
+        int userInput = tryCatch(min, max);
 
         while (!isValidInput(userInput, min, max)) {
-            try{
-                userInput = sc.nextInt();
-            } catch (Exception e) {
-                System.out.println("Please choose a valid number from " + min + " to " + max);
-            }
+            userInput = tryCatch(min, max);
         }
 
+        return userInput;
+    }
+
+    private int tryCatch(int min, int max) {
+        int userInput = 0;
+        try {
+            userInput = sc.nextInt();
+        } catch (Exception e) {
+            System.out.println("Please choose a valid number from " + min + " to " + max);
+        }
         return userInput;
     }
 
@@ -141,16 +144,17 @@ public class BattleArena {
         return userInput >= min && userInput <= max;
     }
 
-
-    private boolean isWinner() {
+    private boolean isThereWinner() {
         if (heroList.size() == 0) {
             System.out.println("Team hero won");
             return true;
         }
-        else if (enemyList.size() == 0) {
+
+        if (enemyList.size() == 0) {
             System.out.println("Team enemy won");
             return true;
         }
+
         System.out.println("Go to next round: ");
         return false;
     }

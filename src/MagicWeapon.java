@@ -12,8 +12,6 @@ public class MagicWeapon extends Weapon {
        if (!notDurable() || hero.getMana() < manaCost)
            return hero.attack();
 
-
-
        int minDamage = strength - 10;
        durability -= DURABILITY_COST;
        hero.useMagic(manaCost);

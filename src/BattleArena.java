@@ -1,25 +1,12 @@
-import java.applet.Applet;
-import java.applet.AudioClip;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.*;
 import java.awt.*;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.File;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane; //imports
-import javax.swing.JLabel;
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
 
 public class BattleArena {
     private static final Scanner sc = new Scanner(System.in);

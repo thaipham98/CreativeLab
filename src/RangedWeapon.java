@@ -26,10 +26,21 @@ public class RangedWeapon extends Weapon {
         if (notDurable())
             hero.attack();
 
+        int minDamage = strength - 10;
+        durability -= DURABILITY_COST;
+
+        return rand.nextInt(strength - minDamage) + minDamage;
+    }
+
+    @Override
+    public int specialAttack() {
+        if (notDurable())
+            hero.attack();
+
         if (miss())
             return 0;
 
-        int maxDamage = strength + 10;
+        int maxDamage = strength + 15;
         int minDamage = strength - 10;
         durability -= DURABILITY_COST;
 

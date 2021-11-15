@@ -16,6 +16,8 @@ public interface WeaponInterface {
      */
     int damage();
 
+    int specialAttack();
+
     /**
      * The weapon is given to a hero. Set the hero's weapon to this weapon
      * @param hero the hero that uses the weapon

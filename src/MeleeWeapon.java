@@ -10,7 +10,7 @@ Written on Nov 14, 2021
  */
 public class MeleeWeapon extends Weapon {
 
-    private static final int DURABILITY_COST = 3;
+    private static final int DURABILITY_COST_SPECIAL = 3;
 
     /**
      * Construct a melee weapon with name, strength, durability and mana cost
@@ -25,8 +25,16 @@ public class MeleeWeapon extends Weapon {
     @Override
     public int damage() {
         if (notDurable()) return hero.attack();
-        int minDamage = strength - 10;
+        int minDamage = strength - 20;
         durability -= DURABILITY_COST;
         return rand.nextInt(strength - minDamage) + minDamage;
+    }
+
+    @Override
+    public int specialAttack() {
+        if (notDurable()) return hero.attack();
+        int minDamage = strength - 10;
+        durability -= DURABILITY_COST_SPECIAL;
+        return rand.nextInt(strength + 5 - minDamage) + minDamage;
     }
 }

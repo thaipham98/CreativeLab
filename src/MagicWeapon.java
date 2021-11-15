@@ -49,10 +49,7 @@ public class MagicWeapon extends Weapon {
        return rand.nextInt(strength - minDamage) + minDamage;
     }
 
-    /**
-     * Special attack that uses more mana, but does more damage.
-     * @return damage of the special attack
-     */
+    @Override
     public int specialAttack() {
         if (notDurable()) {
             System.out.println("Weapon is not usable");

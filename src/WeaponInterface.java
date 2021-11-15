@@ -16,6 +16,10 @@ public interface WeaponInterface {
      */
     int damage();
 
+    /**
+     * Special attack that uses more mana, but does more damage.
+     * @return damage of the special attack
+     */
     int specialAttack();
 
     /**

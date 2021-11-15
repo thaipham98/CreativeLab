@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Enemy extends CharacterAbstract{
     // TODO: change into phrases to badguy to speak
-    String[] phrases = {"phrase1", "phrase2", "phrase3", "phrase4", "phrase5"};
+    String[] phrases = {"Your soul is mine", "What a weakling!", "On cooldown", "Ah-hah", "Did not ring a bell"};
 
     /**
      * Construct a character object initializing all variables other than alive and
@@ -20,9 +20,7 @@ public class Enemy extends CharacterAbstract{
     public int attack(){
         Random r = new Random();
         System.out.println(phrases[r.nextInt(phrases.length)]);
-        int damage = super.attack();
-        return damage;
-
+        return super.attack();
     }
 
     @Override

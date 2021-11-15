@@ -68,7 +68,7 @@ public abstract class CharacterAbstract implements ICharacter{
 
     @Override
     public String toString() {
-        return "Character [name=" + name + ", hitPoints=" + hitPoints + ", strength=" + strength + ", alive=" + alive + "]";
+        return "Character name=" + name + ", hitPoints=" + hitPoints + ", strength=" + strength + ", alive=" + alive ;
     }
 
 }

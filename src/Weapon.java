@@ -21,11 +21,11 @@ public abstract class Weapon implements WeaponInterface {
     @Override
     public String toString() {
         return "Weapon{" +
-                ", type=" + type +
-                "name='" + name + '\'' +
+                "type=" + type +
+                ", name='" + name + '\'' +
                 ", strength=" + strength +
                 ", durability=" + durability +
-                ", hero=" + hero +
+//                ", hero=" + hero +
                 '}';
     }
 
@@ -36,6 +36,5 @@ public abstract class Weapon implements WeaponInterface {
     public void givenTo(Hero hero) {
         this.hero = hero;
     }
-
 
 }

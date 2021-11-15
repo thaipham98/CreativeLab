@@ -9,8 +9,10 @@ public class MagicWeapon extends Weapon {
 
     @Override
     public int damage() {
-       if (!notDurable() || hero.getMana() < manaCost)
+       if (notDurable() || hero.getMana() < manaCost) {
+           System.out.println("Out of mana. Cannot use special skill, attack regularly!");
            return hero.attack();
+       }
 
        int minDamage = strength - 10;
        durability -= DURABILITY_COST;
@@ -19,8 +21,10 @@ public class MagicWeapon extends Weapon {
     }
 
     public int specialAttack() {
-        if (!notDurable() || hero.getMana() < manaCost)
+        if (notDurable() || hero.getMana() < manaCost) {
+            System.out.println("Out of mana. Cannot use special skill, attack regularly!");
             return hero.attack();
+        }
 
         hero.useMagic(2 * manaCost);
         durability -= DURABILITY_COST;

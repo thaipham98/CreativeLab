@@ -11,8 +11,9 @@ public class Hero extends CharacterAbstract{
      * @param hitPoints - initial set of hitPoints for our character
      * @param strength  - initial strength of our character.
      */
-    public Hero(String name, int hitPoints, int strength) {
+    public Hero(String name, int hitPoints, int strength, int mana) {
         super(name, hitPoints, strength);
+        this.mana = mana;
     }
 
     public void setWeapon(Weapon w1) {
@@ -33,6 +34,7 @@ public class Hero extends CharacterAbstract{
         /* update this function to add the weapon attack */
         /* make sure weapon doesn't equal null before adding it */
         if (this.w1 == null) {
+            System.out.println("Hero is not holding a weapon. Deal regular damage");
             return this.attack();
         }
         return this.w1.damage();
@@ -40,18 +42,21 @@ public class Hero extends CharacterAbstract{
 
     // TODO: check on this, depends on weapon class
     public int specAttackWithWeapon(){
-        if (this.w1 == null) {
+        if (this.w1 == null || !(w1 instanceof MagicWeapon)) {
+            System.out.println("Hero is not holding magic weapon. Deal regular damage");
             return this.attack();
         }
-        return this.w1.damage();
+        
+        return ((MagicWeapon) this.w1).specialAttack();
     }
 
     @Override
     public String toString() {
-        return "HERO " + super.toString();
+        return "HERO " + super.toString() + "mana = " + mana;
     }
 
     public void useMagic(int manaCost) {
-         this.mana -= manaCost;
+        System.out.println("use magic method from hero line 57");
+        this.mana -= manaCost;
     }
 }

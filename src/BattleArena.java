@@ -1,6 +1,20 @@
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.awt.FlowLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class BattleArena {
     private static final Scanner sc = new Scanner(System.in);
@@ -15,7 +29,11 @@ public class BattleArena {
         this.weaponList = weaponList;
     }
 
-    public void fight(Hero hero, Enemy enemy){
+    public void fight(){
+
+
+        Hero hero = chooseHero();
+        Enemy enemy = chooseEnemy();
 
         if (hero == null || enemy == null) {
             System.out.println("Game is ended!");
@@ -24,10 +42,14 @@ public class BattleArena {
         // give weapon to hero
         // for each fight of hero:
         // which attack to choose.
+        System.out.println("Fight between " + hero.getName() + " and " + enemy.getName());
 
-        if (wantWeapon()) {
+        boolean takeWeapon = wantWeapon();
+        if (takeWeapon) {
             Weapon weapon = chooseWeapon();
             hero.setWeapon(weapon);
+            System.out.println("Got weapon" + weapon);
+            System.out.println("Hero takes" + hero.getWeapon());
         }
 
         while (hero.isAlive() && enemy.isAlive() ){
@@ -42,7 +64,16 @@ public class BattleArena {
             // call attack with weapon
             // 3 = spec attack with weapon
             // call special attack with weapoon
-            AttackType typeAttack = chooseAttack();
+            System.out.println(hero);
+            System.out.println(enemy);
+            AttackType typeAttack;
+            if(takeWeapon){
+                typeAttack = chooseAttack();
+            } else{
+                typeAttack = AttackType.REGULAR_ATTACK ;
+            }
+
+
             int heroDamage = 0;
             if (typeAttack == AttackType.REGULAR_ATTACK) {
                 heroDamage = hero.attack();
@@ -53,21 +84,24 @@ public class BattleArena {
             }
 
             enemy.takeDamage(heroDamage);
+            System.out.println(hero.getName() + " hits " + enemy.getName() + "for " + heroDamage + " damage.");
             int enemyDamage = enemy.attack();
             hero.takeDamage(enemyDamage);
-            System.out.println(hero.getName() + " hits " + enemy.getName());
+            System.out.println(enemy.getName() + " hits " + hero.getName() + "for " + enemyDamage + " damage.");
         }
 
         // remove the dead character
         if (! hero.isAlive()){
+            System.out.println("Hero " + hero.getName() + " is defeated");
             heroList.remove(hero);
         } else if (! enemy.isAlive()){
+            System.out.println("Enemy " + enemy.getName() + " has been slain");
             enemyList.remove(enemy);
         }
 
         // check is there is any winner yet.
         if (!this.isThereWinner()) {
-            this.fight(chooseHero(), chooseEnemy());
+            this.fight();
         }
     }
 
@@ -90,6 +124,12 @@ public class BattleArena {
     private boolean wantWeapon() {
         System.out.println("Do you want to use weapon? (y/n): ");
         String answer = sc.nextLine();
+
+        while (!answer.equals("y") && !answer.equals("n")){
+            System.out.print("Please enter 'y' or 'n' only! ");
+            System.out.println("Do you want to use weapon? (y/n): ");
+            answer = sc.nextLine();
+        }
         return answer.equals("y");
     }
 
@@ -122,6 +162,7 @@ public class BattleArena {
         int userInput = tryCatch(min, max);
 
         while (!isValidInput(userInput, min, max)) {
+            System.out.println("Please choose a valid number from " + min + " to " + max);
             userInput = tryCatch(min, max);
         }
 
@@ -131,9 +172,11 @@ public class BattleArena {
     private int tryCatch(int min, int max) {
         int userInput = 0;
         try {
+            //Scanner sc2 = new Scanner(System.in);
             userInput = sc.nextInt();
         } catch (Exception e) {
-            System.out.println("Please choose a valid number from " + min + " to " + max);
+            System.out.println("Please provide a number: ");
+            sc.next();
         }
         return userInput;
     }
@@ -144,16 +187,55 @@ public class BattleArena {
 
     private boolean isThereWinner() {
         if (heroList.size() == 0) {
-            System.out.println("Team hero won");
+            System.out.println("Team enemy won!");
+            try
+            {
+                Clip clip = AudioSystem.getClip();
+                clip.open(AudioSystem.getAudioInputStream(new File("src/winning_sound.wav")));
+                System.out.println("play!");
+                clip.start();
+            }
+            catch (Exception exc)
+            {
+                exc.printStackTrace(System.out);
+            }
             return true;
         }
 
         if (enemyList.size() == 0) {
-            System.out.println("Team enemy won");
+            System.out.println("Team hero won!");
+            try
+            {
+                Clip clip = AudioSystem.getClip();
+                clip.open(AudioSystem.getAudioInputStream(new File("src/winning_sound.wav")));
+                System.out.println("play!");
+                clip.start();
+            }
+            catch (Exception exc)
+            {
+                exc.printStackTrace(System.out);
+            }
             return true;
         }
 
         System.out.println("Go to next round: ");
         return false;
     }
+
+////    // Util classes
+//    public DisplayImage(String pathname) throws IOException    {
+//        BufferedImage img=ImageIO.read(new File("f://images.jpg"));
+//        ImageIcon icon=new ImageIcon(img);
+//        JFrame frame=new JFrame();
+//        frame.setLayout(new FlowLayout());
+//        frame.setSize(200,300);
+//        JLabel lbl=new JLabel();
+//        lbl.setIcon(icon);
+//        frame.add(lbl);
+//        frame.setVisible(true);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//    }
+
+
+
 }

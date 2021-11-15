@@ -52,7 +52,7 @@ public class Hero extends CharacterAbstract{
 
     @Override
     public String toString() {
-        return "HERO " + super.toString() + "mana = " + mana;
+        return "HERO " + super.toString() + ", mana = " + mana;
     }
 
     public void useMagic(int manaCost) {

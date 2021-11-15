@@ -15,42 +15,6 @@ public class BattleArena {
         this.weaponList = weaponList;
     }
 
-    private Enemy chooseEnemy(){
-        if (enemyList.isEmpty()) {
-            return null;
-        }
-        int randomIdx = rand.nextInt(enemyList.size());
-        return enemyList.get(randomIdx);
-    }
-
-    private Hero chooseHero(){
-        if (heroList.isEmpty()) {
-            return null;
-        }
-        int randomIdx = rand.nextInt(heroList.size());
-        return heroList.get(randomIdx);
-    }
-
-    private boolean wantWeapon() {
-        System.out.println("Do you want to use weapon? (y/n): ");
-        String answer = sc.nextLine();
-        return answer.equals("y");
-    }
-
-    private void printOutListWeapon() {
-        for (int i = 0; i < weaponList.size(); i++) {
-            System.out.println((i + 1) + ": " + weaponList.get(i).toString());
-        }
-    }
-
-    private Weapon chooseWeapon(){
-        System.out.println("Input an integer to choose weapon from these: ");
-        printOutListWeapon();
-        int weaponChoice = getUserIntegerInput(1, weaponList.size());
-        return weaponList.get(weaponChoice-1);
-    }
-
-
     public void fight(Hero hero, Enemy enemy){
 
         if (hero == null || enemy == null) {
@@ -107,6 +71,41 @@ public class BattleArena {
         }
     }
 
+    private Enemy chooseEnemy(){
+        if (enemyList.isEmpty()) {
+            return null;
+        }
+        int randomIdx = rand.nextInt(enemyList.size());
+        return enemyList.get(randomIdx);
+    }
+
+    private Hero chooseHero(){
+        if (heroList.isEmpty()) {
+            return null;
+        }
+        int randomIdx = rand.nextInt(heroList.size());
+        return heroList.get(randomIdx);
+    }
+
+    private boolean wantWeapon() {
+        System.out.println("Do you want to use weapon? (y/n): ");
+        String answer = sc.nextLine();
+        return answer.equals("y");
+    }
+
+    private void printOutListWeapon() {
+        for (int i = 0; i < weaponList.size(); i++) {
+            System.out.println((i + 1) + ": " + weaponList.get(i).toString());
+        }
+    }
+
+    private Weapon chooseWeapon(){
+        System.out.println("Input an integer to choose weapon from these: ");
+        printOutListWeapon();
+        int weaponChoice = getUserIntegerInput(1, weaponList.size());
+        return weaponList.get(weaponChoice-1);
+    }
+
     private AttackType chooseAttack() {
         int attackChoice;
 
@@ -118,7 +117,6 @@ public class BattleArena {
         attackChoice = getUserIntegerInput(1, 3);
         return AttackType.valueOf(attackChoice);
     }
-
 
     private int getUserIntegerInput(int min, int max) {
         int userInput = tryCatch(min, max);

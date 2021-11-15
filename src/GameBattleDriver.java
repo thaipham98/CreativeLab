@@ -20,7 +20,7 @@ import java.util.List;
 //Game driver
 //Notice it's the only class declared as public.
 public class GameBattleDriver {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		Hero h1 = new Hero("Dawnbreaker", 100, 20,4  ); // Earthshaker, Kunkka, Mars
 		Hero h2 = new Hero("Earthshaker", 80, 30, 5 );

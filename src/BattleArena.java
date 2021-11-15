@@ -34,7 +34,7 @@ public class BattleArena {
         this.weaponList = weaponList;
     }
 
-    public void fight(){
+    public void fight() throws InterruptedException {
 
 
         Hero hero = chooseHero();
@@ -87,12 +87,13 @@ public class BattleArena {
             } else if (typeAttack == AttackType.SPECIAL_SKILL) {
                 heroDamage = hero.specAttackWithWeapon();
             }
-
             enemy.takeDamage(heroDamage);
             System.out.println(hero.getName() + " hits " + enemy.getName() + "for " + heroDamage + " damage.");
+            TimeUnit.SECONDS.sleep(1);
             int enemyDamage = enemy.attack();
             hero.takeDamage(enemyDamage);
             System.out.println(enemy.getName() + " hits " + hero.getName() + "for " + enemyDamage + " damage.");
+            TimeUnit.SECONDS.sleep(1);
         }
 
         // remove the dead character
@@ -197,9 +198,12 @@ public class BattleArena {
             {
                 Clip clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(new File("src/losing_sound.wav")));
+                DisplayImage("src/defeat_4x.jpg");
                 clip.start();
                 TimeUnit.SECONDS.sleep(10);
+                System.exit(0);
             }
+
             catch (Exception exc)
             {
                 exc.printStackTrace(System.out);
@@ -214,8 +218,10 @@ public class BattleArena {
             {
                 Clip clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(new File("src/winning_sound.wav")));
+                DisplayImage("src/Victory+Easter.jpg");
                 clip.start();
                 TimeUnit.SECONDS.sleep(10);
+                System.exit(0);
             }
             catch (Exception exc)
             {

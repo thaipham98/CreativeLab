@@ -19,9 +19,9 @@ import java.util.List;
 public class GameBattleDriver {
 	public static void main(String[] args)  {
 
-		Hero h1 = new Hero("Dawnbreaker", 100, 20,4  ); // Earthshaker, Kunkka, Mars
-		Hero h2 = new Hero("Earthshaker", 80, 30, 5 );
-		Hero h3 = new Hero("Kunkka", 150, 15, 6 );
+		Hero h1 = new Hero("Dawnbreaker", 100, 20,7  );
+		Hero h2 = new Hero("Earthshaker", 80, 30, 8 );
+		Hero h3 = new Hero("Kunkka", 150, 15, 10 );
 		Hero h4 = new Hero("Mars", 70, 40, 7 );
 
 		Enemy e1 = new Enemy("Pudge", 100, 30);
@@ -30,8 +30,8 @@ public class GameBattleDriver {
 		Enemy e4 = new Enemy("Undying", 90, 35);
 
 		//falcon blade, dagon, scythe of vyse, eternal shroud, Meteor Hammer, Ethereal blade, Abyssal Blade, Eye of Skadi
-		Weapon p1 = new MagicWeapon("Falcon Blade", 40, 2, 2);
-		Weapon p2 = new MagicWeapon("Dagon", 100, 2, 4);
+		Weapon p1 = new MagicWeapon("Falcon Blade", 40, 14, 2);
+		Weapon p2 = new MagicWeapon("Dagon", 100, 8, 4);
 		Weapon p3 = new MeleeWeapon("Scythe of Vyse", 150, 10);
 		Weapon p4 = new RangedWeapon("Machine Gun", 40, 10);
 

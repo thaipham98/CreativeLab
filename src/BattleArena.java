@@ -61,7 +61,7 @@ public class BattleArena {
             Weapon weapon = chooseWeapon();
             hero.setWeapon(weapon);
 //            System.out.println("Got weapon" + weapon);
-            System.out.println("Hero takes" + hero.getWeapon());
+            System.out.println("Hero takes " + hero.getWeapon());
         }
 
         while (hero.isAlive() && enemy.isAlive() ){

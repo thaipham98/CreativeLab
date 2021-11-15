@@ -68,4 +68,15 @@ public class MagicWeapon extends Weapon {
         durability -= DURABILITY_COST;
         return damage() * 2;
     }
+
+    @Override
+    public String toString(){
+        return "Weapon{" +
+                "type=" + type +
+                ", name='" + name + '\'' +
+                ", strength=" + strength +
+                ", durability=" + durability +
+                ", manaCost=" + manaCost +
+                '}';
+    }
 }

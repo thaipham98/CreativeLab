@@ -1,26 +1,23 @@
+/*
+Writtem by Thuytien Bui and Thai Pham.
+Written on Nov 14, 2021
+*/
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 /**
-* Battle Arena
-* Goals: Demonstrate how class can be within one file; 
-* explore toString() overrides; show last ICE's solution; 
-* further discuss the concept of objects
-* Demonstrate the TODO tag
-* To generate the to do list go to : Window -> Show View -> Tasks
-*
-* Author : Dr. G
-* Date : 5/13/21
-* Edited by: Thuytien Bui, NUID 001529311
-* Edited on: Sep 30, 2021
+* Represent a Battle Arena game. A fight between a team of hero and a team of enemy.
+* Randomly pits them against each other. A weapon rack is a list of weapons you may offer your hero prior to the battle.
+ * Let the user select a weapon to equip to a hero and then start a battle loop.
+ * Before each attack allow your user to select attack, attack with equipped weapon, or special attack with weapon.
+ * Repeat this process until all the bad guys or all of the heroes are defeated.
 */
 
-//Game driver
-//Notice it's the only class declared as public.
 public class GameBattleDriver {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args)  {
 
 		Hero h1 = new Hero("Dawnbreaker", 100, 20,4  ); // Earthshaker, Kunkka, Mars
 		Hero h2 = new Hero("Earthshaker", 80, 30, 5 );
@@ -52,9 +49,6 @@ public class GameBattleDriver {
 		);
 
 		BattleArena arena = new BattleArena(heroList, enemyList, weaponList);
-
-
-
 
 		arena.fight();
 

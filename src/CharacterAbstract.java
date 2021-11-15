@@ -1,3 +1,8 @@
+/*
+Writtem by Thuytien Bui and Thai Pham.
+Written on Nov 14, 2021
+*/
+
 import java.util.Random;
 
 public abstract class CharacterAbstract implements ICharacter{
@@ -66,6 +71,10 @@ public abstract class CharacterAbstract implements ICharacter{
         return alive;
     }
 
+    /**
+     * Represent character's name, hit point, strength, alive status
+     * @return a String with information about character's name, hit point, strength, alive status
+     */
     @Override
     public String toString() {
         return "Character name=" + name + ", hitPoints=" + hitPoints + ", strength=" + strength + ", alive=" + alive ;

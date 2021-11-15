@@ -1,11 +1,14 @@
 import java.util.Random;
 
+/**
+ * Represent a bad guy or enemy
+ */
 public class Enemy extends CharacterAbstract{
     // TODO: change into phrases to badguy to speak
     String[] phrases = {"Your soul is mine", "What a weakling!", "On cooldown", "Ah-hah", "Did not ring a bell"};
 
     /**
-     * Construct a character object initializing all variables other than alive and
+     * Construct an enemy character object initializing all variables other than alive and
      * set alive to be true
      *
      * @param name      - characters name

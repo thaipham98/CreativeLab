@@ -1,3 +1,8 @@
+/*
+Writtem by Thuytien Bui and Thai Pham.
+Written on Nov 14, 2021
+*/
+
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
@@ -8,6 +13,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Represent a battle arena where the two teams fight
+ */
 public class BattleArena {
     private static final Scanner sc = new Scanner(System.in);
     private static final Random rand = new Random();
@@ -15,15 +23,24 @@ public class BattleArena {
     private List<Enemy> enemyList;
     private List<Weapon> weaponList;
 
+    /**
+     * Initialize a battle arena with a list of hero characters and a list of enemy
+     * @param heroList list of hero
+     * @param enemyList list of enemy
+     * @param weaponList list of weapons
+     */
     public BattleArena(List<Hero> heroList, List<Enemy> enemyList, List<Weapon> weaponList ){
         this.heroList = heroList;
         this.enemyList = enemyList;
         this.weaponList = weaponList;
     }
 
-    public void fight() throws InterruptedException {
-
-
+    /**
+     * Represent a fight between a hero and an enemy
+     * The hero and enemy are randomly chosen to fight each other
+     * The fight stop when a character dies. The next round is automatically triggered.
+     */
+    public void fight()  {
         Hero hero = chooseHero();
         Enemy enemy = chooseEnemy();
 
@@ -31,16 +48,19 @@ public class BattleArena {
             System.out.println("Game is ended!");
             return;
         }
+        System.out.println("Fight between " + hero.getName() + " and " + enemy.getName());
+        System.out.println(hero);
+        System.out.println(enemy);
+
         // give weapon to hero
         // for each fight of hero:
         // which attack to choose.
-        System.out.println("Fight between " + hero.getName() + " and " + enemy.getName());
-        //sc.nextLine();
+
         boolean takeWeapon = wantWeapon();
         if (takeWeapon) {
             Weapon weapon = chooseWeapon();
             hero.setWeapon(weapon);
-            System.out.println("Got weapon" + weapon);
+//            System.out.println("Got weapon" + weapon);
             System.out.println("Hero takes" + hero.getWeapon());
         }
 
@@ -56,8 +76,8 @@ public class BattleArena {
             // call attack with weapon
             // 3 = spec attack with weapon
             // call special attack with weapoon
-            System.out.println(hero);
-            System.out.println(enemy);
+            // System.out.println(hero);
+            // System.out.println(enemy);
             AttackType typeAttack;
             if(takeWeapon){
                 typeAttack = chooseAttack();
@@ -98,6 +118,10 @@ public class BattleArena {
         }
     }
 
+    /**
+     * Randomly choose an enemy from list of enemy
+     * @return an enemy
+     */
     private Enemy chooseEnemy(){
         if (enemyList.isEmpty()) {
             return null;
@@ -106,6 +130,10 @@ public class BattleArena {
         return enemyList.get(randomIdx);
     }
 
+    /**
+     * Randomly choose a hero from list of hero
+     * @return a hero
+     */
     private Hero chooseHero(){
         if (heroList.isEmpty()) {
             return null;
@@ -114,6 +142,10 @@ public class BattleArena {
         return heroList.get(randomIdx);
     }
 
+    /**
+     * Ask the user whether he wants to give hero a weapon
+     * @return a weapon chosen by user input
+     */
     private boolean wantWeapon() {
         Scanner scWeapon = new Scanner(System.in);
         System.out.println("Do you want to use weapon? (y/n): ");
@@ -129,12 +161,19 @@ public class BattleArena {
         return answer.equals("y");
     }
 
+    /**
+     * Print out list of available weapon.
+     */
     private void printOutListWeapon() {
         for (int i = 0; i < weaponList.size(); i++) {
             System.out.println((i + 1) + ": " + weaponList.get(i).toString());
         }
     }
 
+    /**
+     * Ask user to choose weapon from the list of available weapon
+     * @return A weapon chosen by user input
+     */
     private Weapon chooseWeapon(){
         System.out.println("Input an integer to choose weapon from these: ");
         printOutListWeapon();
@@ -142,6 +181,10 @@ public class BattleArena {
         return weaponList.get(weaponChoice-1);
     }
 
+    /**
+     * Choose the type of attack for hero: regular attack, attack with weapon, or special attack with weapon
+     * @return AttackType: the type of attack for hero
+     */
     private AttackType chooseAttack() {
         int attackChoice;
 
@@ -154,6 +197,12 @@ public class BattleArena {
         return AttackType.valueOf(attackChoice);
     }
 
+    /**
+     * Helper method to get integer input from user between a range of min and max value
+     * @param min minimum value allowed
+     * @param max maximum value allowed
+     * @return an integer between min and max
+     */
     private int getUserIntegerInput(int min, int max) {
         int userInput = tryCatch(min, max);
 
@@ -165,6 +214,12 @@ public class BattleArena {
         return userInput;
     }
 
+    /**
+     * Check if user input is within [min,max] range
+     * @param min minimum allowed value
+     * @param max maximum allowed value
+     * @return an integer between min and max
+     */
     private int tryCatch(int min, int max) {
         int userInput = 0;
         try {
@@ -177,10 +232,22 @@ public class BattleArena {
         return userInput;
     }
 
+    /**
+     * Check if user input is between min and max
+     * @param userInput user input passed from other method
+     * @param min minimum allowed value
+     * @param max maximum allowed value
+     * @return an integer between min and max
+     */
     private boolean isValidInput(int userInput, int min, int max) {
         return userInput >= min && userInput <= max;
     }
 
+    /**
+     * Check if there is a team without any alive character.
+     * Battle ends if a team is out of alive character.
+     * @return if there is a winning team.
+     */
     private boolean isThereWinner() {
         if (heroList.size() == 0) {
             System.out.println("Team enemy won!");
@@ -226,6 +293,12 @@ public class BattleArena {
     }
 
 ////    // Util classes
+
+    /**
+     * Display an image
+     * @param imagePath path to image file
+     * @return JFrame of image popup
+     */
     public JFrame DisplayImage(String imagePath){
         JFrame f = new JFrame(); //creates jframe f
 

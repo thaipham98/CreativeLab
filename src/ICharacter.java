@@ -1,30 +1,47 @@
+/*
+Writtem by Thuytien Bui and Thai Pham.
+Written on Nov 14, 2021
+*/
+
+/**
+ * Represent a character in battle arena
+ */
 public interface ICharacter {
 
     /**
-     * Attack
-     * @return from 1 to strength
+     * Represent an attack from a character
+     * @return an integer from 1 to strength
      */
-    public int attack();
+    int attack();
 
     /**
-     * Take damage, hitPoint is deducted
-     * @return
+     * When character take damage, his hitPoint is deducted
      */
-    public void takeDamage(int damage);
+    void takeDamage(int damage);
 
     /**
-     * Basic setter for hitPoints Assigns new value to character hitPoints
-     *
-     * @param hitPoints
+     * Assigns new value to character's hitPoints
+     * @param hitPoints hit point of a character
      */
-    public void setHitPoints(int hitPoints);
+    void setHitPoints(int hitPoints);
 
-    // The minimum getters needed for this to work skipping documentation for this.
-    public String getName();
+    /**
+     * Get name of a character
+     * @return name of character
+     */
+    String getName();
 
-    public int getHitPoints();
+    /**
+     * Get hit point of a character
+     * @return hit point of the character
+     */
+    int getHitPoints();
 
-    public int getStrength();
+    /**
+     * Get strength of the character
+     * @return Strength of the character
+     */
+    int getStrength();
 
     /**
      * Return the value of the alive status variable Allows outside objects to
@@ -32,13 +49,13 @@ public interface ICharacter {
      *
      * @return value of alive status variable
      */
-    public boolean isAlive();
+    boolean isAlive();
 
     /* Add a toString overload for character and test */
     /**
      * toString to for character, listing name, hitpoints, strength and whether he is alive
-     * @return
+     * @return return a String to display information of character
      */
-    public String toString();
+    String toString();
 
 }

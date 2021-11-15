@@ -56,7 +56,6 @@ public class Hero extends CharacterAbstract{
     }
 
     public void useMagic(int manaCost) {
-        System.out.println("use magic method from hero line 57");
         this.mana -= manaCost;
     }
 }

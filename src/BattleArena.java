@@ -35,7 +35,7 @@ public class BattleArena {
         // for each fight of hero:
         // which attack to choose.
         System.out.println("Fight between " + hero.getName() + " and " + enemy.getName());
-
+        //sc.nextLine();
         boolean takeWeapon = wantWeapon();
         if (takeWeapon) {
             Weapon weapon = chooseWeapon();
@@ -76,11 +76,11 @@ public class BattleArena {
             }
             enemy.takeDamage(heroDamage);
             System.out.println(hero.getName() + " hits " + enemy.getName() + "for " + heroDamage + " damage.");
-            TimeUnit.SECONDS.sleep(1);
+            //TimeUnit.SECONDS.sleep(1);
             int enemyDamage = enemy.attack();
             hero.takeDamage(enemyDamage);
             System.out.println(enemy.getName() + " hits " + hero.getName() + "for " + enemyDamage + " damage.");
-            TimeUnit.SECONDS.sleep(1);
+            //TimeUnit.SECONDS.sleep(1);
         }
 
         // remove the dead character
@@ -115,14 +115,17 @@ public class BattleArena {
     }
 
     private boolean wantWeapon() {
+        Scanner scWeapon = new Scanner(System.in);
         System.out.println("Do you want to use weapon? (y/n): ");
-        String answer = sc.nextLine();
 
-        while (!answer.equals("y") && !answer.equals("n")){
+        String answer = scWeapon.nextLine();
+
+        while (!answer.equals("y") && !answer.equals("n")) {
             System.out.print("Please enter 'y' or 'n' only! ");
             System.out.println("Do you want to use weapon? (y/n): ");
-            answer = sc.nextLine();
+            answer = scWeapon.nextLine();
         }
+
         return answer.equals("y");
     }
 
@@ -187,7 +190,7 @@ public class BattleArena {
                 clip.open(AudioSystem.getAudioInputStream(new File("src/losing_sound.wav")));
                 DisplayImage("src/defeat_4x.jpg");
                 clip.start();
-                TimeUnit.SECONDS.sleep(10);
+                TimeUnit.SECONDS.sleep(5);
                 System.exit(0);
             }
 
@@ -207,7 +210,7 @@ public class BattleArena {
                 clip.open(AudioSystem.getAudioInputStream(new File("src/winning_sound.wav")));
                 DisplayImage("src/Victory+Easter.jpg");
                 clip.start();
-                TimeUnit.SECONDS.sleep(10);
+                TimeUnit.SECONDS.sleep(5);
                 System.exit(0);
             }
             catch (Exception exc)

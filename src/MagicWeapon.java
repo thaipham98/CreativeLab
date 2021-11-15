@@ -3,12 +3,6 @@ Writtem by Thuytien Bui and Thai Pham.
 Written on Nov 14, 2021
 */
 
-/*
-Writtem by Thuytien Bui and Thai Pham.
-Written on Nov 14, 2021
-*/
-
-
 /**
  * Represent a magic weapon.
  * Magic is a weapon that uses very little durability, but deducts mana from the hero for every use.

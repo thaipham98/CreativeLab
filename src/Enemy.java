@@ -1,3 +1,8 @@
+/*
+Writtem by Thuytien Bui and Thai Pham.
+Written on Nov 14, 2021
+*/
+
 import java.util.Random;
 
 /**

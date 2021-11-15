@@ -20,7 +20,6 @@ public class Enemy extends CharacterAbstract{
     public int attack(){
         Random r = new Random();
         System.out.println(phrases[r.nextInt(phrases.length)]);
-//        System.out.println("random phrases");
         int damage = super.attack();
         return damage;
 

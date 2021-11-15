@@ -17,12 +17,6 @@ public interface WeaponInterface {
     int damage();
 
     /**
-     * Check if the durability of the weapon is below 0
-     * @return if the weapon is not durable.
-     */
-    boolean notDurable();
-
-    /**
      * The weapon is given to a hero. Set the hero's weapon to this weapon
      * @param hero the hero that uses the weapon
      */

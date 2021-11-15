@@ -64,9 +64,10 @@ public class MagicWeapon extends Weapon {
             return hero.attack();
         }
 
+        int minDamage = strength - 10;
         hero.useMagic(2 * manaCost);
         durability -= DURABILITY_COST;
-        return damage() * 2;
+        return 2 * (rand.nextInt(strength - minDamage) + minDamage);
     }
 
     @Override

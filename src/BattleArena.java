@@ -76,8 +76,8 @@ public class BattleArena {
             // call attack with weapon
             // 3 = spec attack with weapon
             // call special attack with weapoon
-            // System.out.println(hero);
-            // System.out.println(enemy);
+             System.out.println(hero);
+             System.out.println(enemy);
             AttackType typeAttack;
             if(takeWeapon){
                 typeAttack = chooseAttack();

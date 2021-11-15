@@ -48,8 +48,7 @@ public abstract class Weapon implements WeaponInterface {
                 '}';
     }
 
-    @Override
-    public boolean notDurable() {
+    protected boolean notDurable() {
         return durability <= 0;
     }
 

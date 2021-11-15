@@ -1,20 +1,25 @@
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane; //imports
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 
 public class BattleArena {
     private static final Scanner sc = new Scanner(System.in);
@@ -191,14 +196,15 @@ public class BattleArena {
             try
             {
                 Clip clip = AudioSystem.getClip();
-                clip.open(AudioSystem.getAudioInputStream(new File("src/winning_sound.wav")));
-                System.out.println("play!");
+                clip.open(AudioSystem.getAudioInputStream(new File("src/losing_sound.wav")));
                 clip.start();
+                TimeUnit.SECONDS.sleep(10);
             }
             catch (Exception exc)
             {
                 exc.printStackTrace(System.out);
             }
+
             return true;
         }
 
@@ -208,13 +214,14 @@ public class BattleArena {
             {
                 Clip clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(new File("src/winning_sound.wav")));
-                System.out.println("play!");
                 clip.start();
+                TimeUnit.SECONDS.sleep(10);
             }
             catch (Exception exc)
             {
                 exc.printStackTrace(System.out);
             }
+
             return true;
         }
 
@@ -223,18 +230,29 @@ public class BattleArena {
     }
 
 ////    // Util classes
-//    public DisplayImage(String pathname) throws IOException    {
-//        BufferedImage img=ImageIO.read(new File("f://images.jpg"));
-//        ImageIcon icon=new ImageIcon(img);
-//        JFrame frame=new JFrame();
-//        frame.setLayout(new FlowLayout());
-//        frame.setSize(200,300);
-//        JLabel lbl=new JLabel();
-//        lbl.setIcon(icon);
-//        frame.add(lbl);
-//        frame.setVisible(true);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//    }
+    public JFrame DisplayImage(String imagePath){
+        JFrame f = new JFrame(); //creates jframe f
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //this is your screen size
+
+        f.setUndecorated(true); //removes the surrounding border
+
+        ImageIcon image = new ImageIcon(imagePath); //imports the image
+
+        JLabel lbl = new JLabel(image); //puts the image into a jlabel
+
+        f.getContentPane().add(lbl); //puts label inside the jframe
+
+        f.setSize(image.getIconWidth(), image.getIconHeight()); //gets h and w of image and sets jframe to the size
+
+        int x = (screenSize.width - f.getSize().width)/2; //These two lines are the dimensions
+        int y = (screenSize.height - f.getSize().height)/2;//of the center of the screen
+
+        f.setLocation(x, y); //sets the location of the jframe
+        f.setVisible(true); //makes the jframe visible
+        return f;
+    }
+
 
 
 

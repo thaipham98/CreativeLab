@@ -134,9 +134,6 @@ public class BattleArena {
             }
         }
 
-        if (userInput < min || userInput > max){
-            throw new IllegalArgumentException("Please input a number between " + min + " and " + max);
-        }
         return userInput;
     }
 
